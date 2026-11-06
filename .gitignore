@@ -21,3 +21,4 @@ mta_archives/
 # Deploy logs and build output
 mta-op-*/
 resources/
+app/orderitems/dist/
