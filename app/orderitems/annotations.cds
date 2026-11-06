@@ -1,0 +1,1 @@
+using relservice as service from '../../srv/catalogsrv';

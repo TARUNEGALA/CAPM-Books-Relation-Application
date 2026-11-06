@@ -5,19 +5,44 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"cds-serve",
-    "watch":"cds-watch"
+    "start": "cds-serve",
+    "watch": "cds-watch",
+    "watch-relationdemoui": "cds watch --open com.airbus.relationdemoui/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "undeploy": "cf undeploy relatioship --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-orderitems": "cds watch --open com.airbus.orderitems/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@cap-js/hana": "^3",
     "@sap/cds": "^10.1.1",
+    "@sap/xssec": "^4.15.0",
     "express": "^5.3.0"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^3.1.2",
-    "@sap/cds-dk": "^10.1.0"
-  }
+    "@sap/cds-dk": "^10.1.0",
+    "cds-plugin-ui5": "^0.17.0",
+    "mbt": "^1.2.49",
+    "rimraf": "^5.0.5"
+  },
+  "cds": {
+    "requires": {
+      "[production]": {
+        "db": "hana",
+        "auth": "xsuaa"
+      }
+    }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/relationdemoui",
+    "app/orderitems"
+  ]
 }

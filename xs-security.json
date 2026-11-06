@@ -1,0 +1,36 @@
+{
+  "xsappname" : "relatioship",
+  "tenant-mode":"dedicated",
+  "description":"security profile of relationship",
+  "scopes": [
+    {"name":"$XSAPPNAME.Viewer","description":"Read data"},
+    {"name":"$XSAPPNAME.Admin","description":"Manage Data"}
+  ],
+  
+  "role-templates": [
+    {
+      "name":"Viewer",
+      "description":"View Data",
+      "scope-references":["$XSAPPNAME.Viewer"]
+
+    },
+    {
+      "name":"Admin",
+      "description":"Manage Data",
+      "scope-references":["$XSAPPNAME.Admin","$XSAPPNAME.Viewer"]
+    }
+  ],
+  "role-collections":[
+    {
+      "name":"Relship_Viewer",
+      "description":"Relship Read access",
+      "role-template-references":["$XSAPPNAME.Viewer"]
+    },
+    {
+      "name":"Relship_Admin",
+      "description":"Relship full access",
+      "role-template-references":["$XSAPPNAME.Admin"]
+    }
+  ]
+
+}
