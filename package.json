@@ -35,6 +35,16 @@
       "[production]": {
         "db": "hana",
         "auth": "xsuaa"
+      },
+      "[development]":{
+        "auth":{
+          "kind":"mocked",
+          "users":{
+            "viewer":{"password":"x","roles":["Viewer"]},
+            "admin":{"password":"x","roles":["Admin"]}
+
+          }
+        }
       }
     }
   },
